@@ -8,7 +8,7 @@ class pelanggan extends connection {
 		return $r[$struktur];
 	}
 	public function all($q) {
-		$q = mysqli_query($this->konek, "SELECT * FROM pelanggan WHERE nama LIKE '%$q%' ORDER BY added DESC");
+		$q = mysqli_query($this->konek, "SELECT * FROM pelanggan WHERE nama LIKE '%$q%' OR alamat LIKE '%$q%' OR telepon LIKE '%$q%' ORDER BY added DESC");
 		if(mysqli_num_rows($q) == 0) {
 			echo "Pelanggan tidak ditemukan";
 			exit();
