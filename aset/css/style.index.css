@@ -1,0 +1,15 @@
+body {
+	background: url(../gbr/shirt.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+.container {
+	position: absolute;
+	top: 120px;left: 30%;
+	width: 40%;
+	background-color: #fff;
+	color: #444;
+	z-index: 10;
+	padding-bottom: 19px;
+}
+.bg { background: rgba(0,0,0,0.4); }

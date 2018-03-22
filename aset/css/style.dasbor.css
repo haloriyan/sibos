@@ -1,0 +1,22 @@
+.atas {
+	position: fixed;
+	top: 0px;left: 0px;right: 0px;
+	line-height: 60px;
+}
+#tblMenu {
+	float: left;
+	margin-left: 5%;
+	font-size: 27px;
+	cursor: pointer;
+}
+.atas .judul {
+	float: left;
+	margin-left: 5%;
+	font-size: 23px;
+	font-family: OBold;
+}
+.container {
+	position: absolute;
+	top: 60px;left: 0px;right: 0px;
+	color: #444;
+}
