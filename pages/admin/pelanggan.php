@@ -7,7 +7,7 @@
 	<link href="../aset/fw/build/fw.css" rel="stylesheet">
 	<link href="../aset/fw/build/font-awesome.min.css" rel="stylesheet">
 	<link href="../aset/css/style.dasbor.css" rel="stylesheet">
-	<script src="http://cdn.riyansatria.tk/embo.js"></script>
+	<script src="http://localhost/vendor/embo.js"></script>
 </head>
 <body>
 
@@ -18,12 +18,12 @@
 
 <div class="menu">
 	<div class="wrap">
-		<a href="#"><li>Dashboard</li></a>
-		<a href="#"><li>Transaksi</li></a>
-		<a href="#"><li>Laporan</li></a>
-		<a href="#" id="active"><li>Pelanggan</li></a>
-		<a href="#"><li>Karyawan</li></a>
-		<a href="#"><li>Layanan</li></a>
+		<a href="./dasbor"><li>Dashboard</li></a>
+		<a href="./transaksi"><li>Transaksi</li></a>
+		<a href="./laporan"><li>Laporan</li></a>
+		<a href="./pelanggan" id="active"><li>Pelanggan</li></a>
+		<a href="./kasir"><li>Kasir</li></a>
+		<a href="./layanan"><li>Layanan</li></a>
 	</div>
 </div>
 
@@ -37,51 +37,6 @@
 		</div>
 		<div class="bag bag-10" style="width: 100%;">
 			<div id="load"></div>
-			<!--
-			<table>
-				<thead>
-					<tr>
-						<th class="biru" style="width: 10%;">ID</th>
-						<th class="biru">Nama</th>
-						<th class="biru">No. Telp</th>
-						<th class="biru">Alamat</th>
-						<th class="biru">Aksi</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>123</td>
-						<td>Riyan Satria</td>
-						<td>085321450680</td>
-						<td>Di rumah</td>
-						<td>
-							<button class="hijau" onclick="ubah(this.value);" value=""><i class="fa fa-edit"></i></button>
-							<button class="merah" onclick="hapus(this.value);" value=""><i class="fa fa-trash"></i></button>
-						</td>
-					</tr>
-					<tr>
-						<td>348</td>
-						<td>Mark Zuckerberg</td>
-						<td>083854709345</td>
-						<td>Pucang Anom</td>
-						<td>
-							<button class="hijau" onclick="ubah(this.value);" value=""><i class="fa fa-edit"></i></button>
-							<button class="merah" onclick="hapus(this.value);" value=""><i class="fa fa-trash"></i></button>
-						</td>
-					</tr>
-					<tr>
-						<td>923</td>
-						<td>Dominic Toretto</td>
-						<td>084382391009</td>
-						<td>Klampis Anom</td>
-						<td>
-							<button class="hijau" onclick="ubah(this.value);" value=""><i class="fa fa-edit"></i></button>
-							<button class="merah" onclick="hapus(this.value);" value=""><i class="fa fa-trash"></i></button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			-->
 		</div>
 	</div>
 </div>
@@ -196,7 +151,7 @@
 		var notelp = pilih("#telpEdit").value;
 		var alamat = pilih("#alamatEdit").value;
 		var edit = "nama="+nama+"&notelp="+notelp+"&alamat="+alamat;
-		pos("../aksi/ubahPelanggan.php", edit, function() {
+		pos("../aksi/pelanggan/ubah.php", edit, function() {
 			hilangPopup("#ubahPelanggan");
 			ambil("../aksi/load/pelanggan.php", function(respon) {
 				tulis("#load", respon);
@@ -209,7 +164,7 @@
 		var notelp = pilih("#telpAdd").value;
 		var alamat = pilih("#alamatAdd").value;
 		var add = "nama="+nama+"&notelp="+notelp+"&alamat="+alamat;
-		pos("../aksi/tambahPelanggan.php", add, function() {
+		pos("../aksi/pelanggan/tambah.php", add, function() {
 			hilangPopup("#tambahPelanggan");
 			pilih("#namaAdd").value = "";
 			pilih("#telpAdd").value = "";
@@ -221,7 +176,7 @@
 	});
 
 	klik("#yaHapus", function() {
-		pos("../aksi/hapusPelanggan.php", "idpel=ias", function() {
+		pos("../aksi/pelanggan/hapus.php", "idpel=ias", function() {
 			hilangPopup("#hapusPelanggan");
 			ambil("../aksi/load/pelanggan.php", function(respon) {
 				tulis("#load", respon);

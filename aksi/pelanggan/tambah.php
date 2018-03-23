@@ -1,5 +1,5 @@
 <?php
-include 'ctrl/pelanggan.php';
+include '../ctrl/pelanggan.php';
 
 $id = "USR".rand(1,9999);
 $nama = $_POST['nama'];

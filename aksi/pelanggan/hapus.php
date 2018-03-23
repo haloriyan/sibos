@@ -1,5 +1,5 @@
 <?php
-include 'ctrl/pelanggan.php';
+include '../ctrl/pelanggan.php';
 
 $id = $_COOKIE['idpelanggan'];
 

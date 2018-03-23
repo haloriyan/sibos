@@ -18,12 +18,12 @@
 
 <div class="menu">
 	<div class="wrap">
-		<a href="#" id="active"><li>Dashboard</li></a>
-		<a href="#"><li>Transaksi</li></a>
-		<a href="#"><li>Laporan</li></a>
-		<a href="#"><li>Pelanggan</li></a>
-		<a href="#"><li>Karyawan</li></a>
-		<a href="#"><li>Layanan</li></a>
+		<a href="./dasbor" id="active"><li>Dashboard</li></a>
+		<a href="./transaksi"><li>Transaksi</li></a>
+		<a href="./laporan"><li>Laporan</li></a>
+		<a href="./pelanggan"><li>Pelanggan</li></a>
+		<a href="./kasir"><li>Kasir</li></a>
+		<a href="./layanan"><li>Layanan</li></a>
 	</div>
 </div>
 

@@ -14,8 +14,31 @@ class admin extends connection {
 	}
 	public function info($u, $struktur) {
 		$q = mysqli_query($this->konek, "SELECT $struktur FROM admin WHERE username = '$u'");
+		if(mysqli_num_rows($q) == 0) {
+			$q = mysqli_query($this->konek, "SELECT $struktur FROM admin WHERE idadmin = '$u'");
+		}
 		$r = mysqli_fetch_array($q);
 		return $r[$struktur];
+	}
+	public function all($role) {
+		if($role == "") {
+			$custom = "";
+		}else {
+			$custom = "WHERE role = '$role'";
+		}
+		$q = mysqli_query($this->konek, "SELECT * FROM admin $custom");
+		while($r = mysqli_fetch_array($q)) {
+			$hasil[] = $r;
+		}
+		return $hasil;
+	}
+	public function tambah($a, $b, $c, $d, $e, $f, $g) {
+		$q = mysqli_query($this->konek, "INSERT INTO admin VALUES('$a','$b','$c','$d','$e','$f','$g')");
+		return $q;
+	}
+	public function ubah($id, $struktur, $val) {
+		$q = mysqli_query($this->konek, "UPDATE admin SET $struktur = '$val' WHERE idadmin = '$id'");
+		return $q;
 	}
 }
 
