@@ -17,6 +17,7 @@ $nunggak 	= $report->totNunggak();
 
 $blnSkrg = date('m') - 1;
 $tglSkrg = date('d');
+$thnSkrg = date('Y');
 $bulan = "Januari,Februari,Maret,April,Mei,Juni,Juli,Agustus,September,Oktober,November,Desember";
 $bln = explode(",", $bulan);
 ?>
@@ -31,7 +32,18 @@ $bln = explode(",", $bulan);
 	<link href="../aset/css/style.dasbor.css" rel="stylesheet">
 	<script src="../aset/js/chart.js"></script>
 	<script src="../aset/js/embo.js"></script>
-	<script src="https://www.gstatic.com/charts/loader.js"></script>
+	<style>
+		.kiri {
+			position: fixed;
+			top: 170px;left: 5%;
+			width: 45%;
+		}
+		.kanan {
+			position: absolute;
+			top: 0px;right: 5%;
+			width: 45%;
+		}
+	</style>
 </head>
 <body>
 
@@ -43,10 +55,11 @@ $bln = explode(",", $bulan);
 
 <div class="menu">
 	<div class="wrap">
-		<a href="./dasbor" id="active"><li>Dashboard</li></a>
-		<a href="./laporan"><li>Laporan</li></a>
+		<a href="./dasbor"><li>Dashboard</li></a>
+		<a href="./laporan" id="active"><li>Laporan</li></a>
 		<a href="./kasir"><li>Kasir</li></a>
 		<a href="./layanan"><li>Layanan</li></a>
+		<a href="./setelan"><li>Setelan</li></a>
 	</div>
 </div>
 
@@ -54,7 +67,7 @@ $bln = explode(",", $bulan);
 	<div class="wrap">
 		<h2>
 			Performa Bulan :
-			<select class="box" id="bln" style="width: 30%;">
+			<select class="box" id="bln" style="width: 20%;" onchange="ubahBln(this.value);">
 				<?php
 				for ($i=0; $i < 12; $i++) {
 					if($i == $blnSkrg) {
@@ -62,54 +75,101 @@ $bln = explode(",", $bulan);
 					}else {
 						$selected = "";
 					}
-					echo "<option ".$selected.">".$bln[$i]."</option>";
+					$val = $i+1;
+					if($val < 10) {
+						$val = "0".$val;
+					}
+					echo "<option value='".$val."' ".$selected.">".$bln[$i]."</option>";
+				}
+				?>
+			</select>
+			<select class="box" id="thn" style="width: 10%" onchange="ubahThn(this.value);">
+				<?php
+				for ($t=2010; $t <= $thnSkrg; $t++) {
+					if($t == $thnSkrg) {
+						$selected = "selected";
+					}else {
+						$selected = "";
+					}
+					echo "<option ".$selected.">".$t."</option>";
 				}
 				?>
 			</select>
 		</h2>
-		<?php
-		for ($i=1; $i <= $tglSkrg; $i++) {
-			if($i < 10) {
-				$i = "0".$i;
-			}
-			$tanggal = $tgl."-".$i;
-			$total = $report->totalTrans($tanggal);
-		}
-		?>
-		<canvas id="myCanvas" width="10px"></canvas>
+		<div class="kiri">
+			<div>
+				<canvas id="myCanvas" width="10px" height="6"></canvas>
+			</div>
+		</div>
+		<div id="load"></div>
 	</div>
 </div>
 
 <script src="../aset/js/script.dasbor.js"></script>
 
-<input type="hidden" id="datas" value="5,0,0,0,12,14,13,25">
+<input type="hidden" id="datas" value="20, 23, 40">
 
 <script>
+	klik("#tblMenu", function() {
+		var aksi = pilih("#tblMenu").getAttribute("aksi");
+		if(aksi == "xMenu") {
+			pengaya(".kiri", "left:30%;width:30%;");
+		}else {
+			pengaya(".kiri", "left:5%");
+		}
+	});
+	function load(area) {
+		ambil("../aksi/load/laporan.php", function(resp) {
+			tulis(area, resp);
+		});
+	}
+
+	load("#load");
+
+	var bln = pilih("#bln").value;
+	var setBln = "namakuki=bln&value="+bln+"&durasi=3650";
+	pos("../aksi/setCookie.php", setBln, function() {
+		load("#load");
+	});
+
+	var thn = pilih("#thn").value;
+	var setThn = "namakuki=thn&value="+thn+"&durasi=3650";
+	pos("../aksi/setCookie.php", setThn, function() {
+		load("#load");
+	});
+
+	function ubahBln(val) {
+		var setBln = "namakuki=bln&value="+val+"&durasi=3650";
+		pos("../aksi/setCookie.php", setBln, function() {
+			load("#load");
+		});
+	}
+
+	function ubahThn(val) {
+		var setThn = "namakuki=thn&value="+val+"&durasi=3650";
+		pos("../aksi/setCookie.php", setThn, function() {
+			load("#load");
+		});
+	}
 	var canvas = pilih("#myCanvas");
 	var ctx = canvas.getContext('2d');
-	var datas = pilih("#datas").value;
+	var labelnya = pilih("#labelnya").value;
+	alert(labelnya);
 
-	google.charts.load('current', {'packages': ['corechart']});
-
-	google.charts.setOnLoadCallback(drawChart);
-
-	function drawChart() {
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Topping');
-		data.addColumn('number', 'Slices');
-		data.addRows([
-			['Mushrooms', 3],
-			['Onions', 1]
-		]);
-
-		var options = {
-			'title': 'Bumbu-bumbu',
-			'width': 400,
-			'height': 300
-		};
-
-		var chart = new google.visualization.PieChart(pilih("#myCanvas"));
-		chart.draw(data, options);
+	function bikinChart() {
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: [labelnya],
+				datasets: [{
+					label: "Performa Transaksi",
+					data: [datanya],
+					backgroundColor: 'rgba(52, 152, 219, 0.61)',
+					borderColor: "#3498db",
+					borderWidth: "1px"
+				}]
+			}
+		});
 	}
 </script>
 

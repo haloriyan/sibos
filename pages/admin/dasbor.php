@@ -40,6 +40,7 @@ $nunggak 	= $report->totNunggak();
 		<a href="./laporan"><li>Laporan</li></a>
 		<a href="./kasir"><li>Kasir</li></a>
 		<a href="./layanan"><li>Layanan</li></a>
+		<a href="./setelan"><li>Setelan</li></a>
 	</div>
 </div>
 

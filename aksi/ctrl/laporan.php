@@ -28,6 +28,43 @@ class report extends admin {
 		$t = mysqli_num_rows($q);
 		return $t;
 	}
+	public function jumlahTransaksi($tgl, $output) {
+		if($output == "nominal") {
+			$query = "SELECT SUM(harga) FROM transaksi WHERE tgl_masuk LIKE '%$tgl%'";
+		}else {
+			$query = "SELECT COUNT(idtransaksi) FROM transaksi WHERE tgl_masuk LIKE '%$tgl%'";
+		}
+		$q = mysqli_query($this->konek, $query);
+		$r = mysqli_fetch_array($q);
+		return $r;
+	}
+	public function jumlahKonsumen($tgl) {
+		$q = mysqli_query($this->konek, "SELECT * FROM transaksi WHERE tgl_masuk LIKE '%$tgl%' GROUP BY nama");
+		$t = mysqli_num_rows($q);
+		return $t;
+	}
+	public function uangDiterima($tgl) {
+		$q = mysqli_query($this->konek, "SELECT SUM(bayar) FROM transaksi WHERE tgl_masuk LIKE '%$tgl%'");
+		$r = mysqli_fetch_array($q);
+		return $r;
+	}
+	public function uangBlmBayar($tgl) {
+		$q = mysqli_query($this->konek, "SELECT SUM(bayar) FROM transaksi WHERE tgl_masuk LIKE '%$tgl%'");
+		$r = mysqli_fetch_array($q);
+
+		$q2 = mysqli_query($this->konek, "SELECT SUM(harga) FROM transaksi WHERE tgl_masuk LIKE '%$tgl%'");
+		$r2 = mysqli_fetch_array($q2);
+
+		$hitung = $r2[0] - $r[0];
+		if($hitung <= 0) {
+			return "Lunas semua";
+		}else {
+			return $hitung;
+		}
+	}
+	public function toIdr($angka) {
+		return "Rp. ".strrev(implode(".", str_split(strrev(strval($angka)), 3)));
+	}
 }
 
 $report = new report();

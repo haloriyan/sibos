@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2018 at 10:47 AM
+-- Generation Time: Mar 24, 2018 at 05:51 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -43,8 +43,25 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idadmin`, `nama`, `telepon`, `alamat`, `username`, `password`, `role`) VALUES
-(1, 'Mark Zucc Baru', '081553844697', 'Bulak Banteng', 'admin', 'admin', 'admin'),
-(4681, 'Riyan Satria', '081252298190', 'Jalan jalan', 'riyans', 'inikatasandi', 'kasir');
+(1, 'Mark Zuckerberg', '081553844697', 'Bulak Banteng', 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `konfigurasi`
+--
+
+CREATE TABLE `konfigurasi` (
+  `logo` varchar(100) NOT NULL,
+  `catatan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konfigurasi`
+--
+
+INSERT INTO `konfigurasi` (`logo`, `catatan`) VALUES
+('logo.jpg', 'lorem ipsum dolor');
 
 -- --------------------------------------------------------
 
@@ -74,30 +91,6 @@ INSERT INTO `layanan` (`idlayanan`, `nama`, `harga`, `satuan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
---
-
-CREATE TABLE `pelanggan` (
-  `idpelanggan` varchar(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `telepon` varchar(15) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `added` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pelanggan`
---
-
-INSERT INTO `pelanggan` (`idpelanggan`, `nama`, `telepon`, `alamat`, `added`) VALUES
-('194', 'Mark Zuckerberg', '083854709345', 'Pucang Anom', 1521712864),
-('34621', 'Martin Garrix', '0313849374', 'Jalan Kedung Klinter 3A No. 30', 1521717445),
-('63378', 'Sundarjan Pichai', '081553844697', 'Petemon', 1521714447),
-('72777', 'Alan Walker', '087283472422', 'Benjeng', 1521717629);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `transaksi`
 --
 
@@ -121,19 +114,14 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`idtransaksi`, `idlayanan`, `idadmin`, `nama`, `telepon`, `alamat`, `tgl_masuk`, `qty`, `status`, `catatan`, `harga`, `bayar`) VALUES
-(1, 0, 0, '', '', '', '0000-00-00', 0, '', '', 0, 0),
+(12413, 12, 4681, 'Riyan Satria', '081252298190', 'di rumah', '2018-03-23', 5, 'Belum diambil', 'gak ada', 70000, 50000),
+(15443, 12, 4681, 'Jokondokondo', '081252298190', 'di rumah', '2018-03-23', 5, 'Belum diambil', 'gak ada', 70000, 50000),
 (26067, 5, 4681, 'Brian Immanuels', '085321450680', 'di rumah', '2018-03-23', 15, 'Sudah diambil', 'gak ada', 150000, 20000),
 (44602, 12, 0, 'Riyan Satria', '081252298190', 'di rumah', '2018-03-23', 3, 'Belum diambil', 'gak ada', 42000, 25000);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `pelanggan`
---
-ALTER TABLE `pelanggan`
-  ADD PRIMARY KEY (`idpelanggan`);
 
 --
 -- Indexes for table `transaksi`

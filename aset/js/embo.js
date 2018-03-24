@@ -48,7 +48,7 @@ function pos(url, data, efek) {
 		if(xhr.readyState == 4 && xhr.status == 200) {
 			efek();
 		}else {
-			console.log("gagal mengirim data");
+			// console.log("gagal mengirim data");
 		}
 	}
 	xhr.send(data);
@@ -62,7 +62,7 @@ function ambil(url, sukses) {
 			var respon = xhr.responseText;
 			return sukses(respon);
 		}else {
-			console.log("gagal mengambil data");
+			// console.log("gagal mengambil data");
 		}
 	}
 	xhr.send(null);
