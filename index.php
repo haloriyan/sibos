@@ -7,7 +7,7 @@
 	<link href="aset/fw/build/fw.css" rel="stylesheet">
 	<link href="aset/css/style.index.css" rel="stylesheet">
 	<link href="aset/fw/build/font-awesome.min.css" rel="stylesheet">
-	<script src="http://cdn.riyansatria.tk/embo.js"></script>
+	<script src="aset/js/embo.js"></script>
 </head>
 <body>
 

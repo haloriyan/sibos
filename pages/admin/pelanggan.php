@@ -1,3 +1,15 @@
+<?php
+include 'aksi/ctrl/admin.php';
+
+$sesi = $conn->cekSesi();
+
+$nama = $admin->info($sesi, "nama");
+$roleSaya = $admin->info($sesi, "role");
+
+if($roleSaya != $role) {
+	die('error : 403');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +26,7 @@
 <div class="atas biru">
 	<div id="tblMenu" aksi="bkMenu"><i class="fa fa-bars"></i></div>
 	<div class="judul">Pelanggan</div>
+	<div id="logout"><i class="fa fa-sign-out"></i></div>
 </div>
 
 <div class="menu">

@@ -48,3 +48,23 @@
 	font-family: OLight;
 }
 .box { width: 92.5%; }
+#logout {
+	float: right;
+	margin-right: 5%;
+	font-size: 30px;
+	cursor: pointer;
+}
+.card {
+	display: inline-block;
+	width: 24%;
+	border-radius: 6px;
+	margin-right: 10px;
+}
+.card .wrap { margin-left: 15%;margin-right: 15%; }
+.card .more {
+	background: #2980b9;
+	line-height: 46px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+.more .wrap { margin-bottom: 0px; }

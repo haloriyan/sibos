@@ -1,3 +1,15 @@
+<?php
+include 'aksi/ctrl/admin.php';
+
+$sesi = $conn->cekSesi();
+
+$nama = $admin->info($sesi, "nama");
+$roleSaya = $admin->info($sesi, "role");
+
+if($roleSaya != $role) {
+	die('error : 403');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +26,13 @@
 <div class="atas biru">
 	<div id="tblMenu" aksi="bkMenu"><i class="fa fa-bars"></i></div>
 	<div class="judul">Kasir</div>
+	<div id="logout"><i class="fa fa-sign-out"></i></div>
 </div>
 
 <div class="menu">
 	<div class="wrap">
 		<a href="./dasbor"><li>Dashboard</li></a>
-		<a href="./transaksi"><li>Transaksi</li></a>
 		<a href="./laporan"><li>Laporan</li></a>
-		<a href="./pelanggan"><li>Pelanggan</li></a>
 		<a href="./kasir" id="active"><li>Kasir</li></a>
 		<a href="./layanan"><li>Layanan</li></a>
 	</div>
@@ -92,6 +103,23 @@
 				</div>
 				<div class="bag bag-5" style="width: 47%;">
 					<button class="hijau" id="yaUbah">UBAH</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="popupWrapper" id="hapusKasir">
+	<div class="popup">
+		<div class="wrap">
+			<h3>Hapus Kasir</h3>
+			<div id="formHapus"></div>
+			<div class="bag-tombol" style="margin-top: 18px;">
+				<div class="bag bag-5" style="width: 47%;">
+					<button id="batal">BATAL</button>
+				</div>
+				<div class="bag bag-5" style="width: 47%;">
+					<button class="merah" id="yaHapus">HAPUS</button>
 				</div>
 			</div>
 		</div>
@@ -174,6 +202,23 @@
 			load("#load");
 		});
 	}
+
+	function hapus(val) {
+		var kuki = "namakuki=idadmin&value="+val+"&durasi=3655";
+		pos("../aksi/setCookie.php", kuki, function() {
+			ambil("../aksi/load/formHapusAdmin.php", function(resp) {
+				munculPopup("#hapusKasir");
+				tulis("#formHapus", resp);
+			});
+		});
+	}
+
+	klik("#yaHapus", function() {
+		pos("../aksi/admin/hapus.php", "ya=ef", function() {
+			hilangPopup("#hapusKasir");
+			load("#load");
+		});
+	});
 </script>
 
 </body>

@@ -7,6 +7,6 @@ $telepon = $_POST['telepon'];
 $alamat = $_POST['alamat'];
 $uname = $_POST['uname'];
 $pwd = $_POST['pwd'];
-$role = $_POST['role'];
+$role = strtolower($_POST['role']);
 
-$admin->tambah($id, $nama, $telepon, $alamat, $uname, $pwd, $role);
+$admin->insert($id, $nama, $telepon, $alamat, $uname, $pwd, $role);

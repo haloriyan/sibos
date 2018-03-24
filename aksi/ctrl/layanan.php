@@ -1,7 +1,7 @@
 <?php
-include 'koneksi.php';
+include 'admin.php';
 
-class layanan extends connection {
+class layanan extends admin {
 	public function info($id, $struktur) {
 		$q = mysqli_query($this->konek, "SELECT $struktur FROM layanan WHERE idlayanan = '$id'");
 		$r = mysqli_fetch_array($q);

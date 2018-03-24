@@ -2,6 +2,22 @@
 include 'koneksi.php';
 
 class admin extends connection {
+	public function __construct() {
+		$this->koneksi();
+	}
+	public function koneksi() {
+		$this->konek = new mysqli("localhost", "root", "", "sibos");
+		return $this->konek;
+	}
+	public function cekSesi() {
+		session_start();
+		$this->sesi = $_SESSION['sibos'];
+		if(empty($this->sesi)) {
+			header("location: ../");
+		}else {
+			return $this->sesi;
+		}
+	}
 	public function login($u, $p) {
 		$q = mysqli_query($this->konek, "SELECT username,password FROM admin WHERE username = '$u' AND password = '$p'");
 		if(mysqli_num_rows($q) == 0) {
@@ -32,12 +48,16 @@ class admin extends connection {
 		}
 		return $hasil;
 	}
-	public function tambah($a, $b, $c, $d, $e, $f, $g) {
+	public function insert($a, $b, $c, $d, $e, $f, $g) {
 		$q = mysqli_query($this->konek, "INSERT INTO admin VALUES('$a','$b','$c','$d','$e','$f','$g')");
 		return $q;
 	}
-	public function ubah($id, $struktur, $val) {
+	public function change($id, $struktur, $val) {
 		$q = mysqli_query($this->konek, "UPDATE admin SET $struktur = '$val' WHERE idadmin = '$id'");
+		return $q;
+	}
+	public function delete($id) {
+		$q = mysqli_query($this->konek, "DELETE FROM admin WHERE idadmin = '$id'");
 		return $q;
 	}
 }

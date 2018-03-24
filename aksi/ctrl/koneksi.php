@@ -12,9 +12,11 @@ class connection {
 		session_start();
 		$this->sesi = $_SESSION['sibos'];
 		if(empty($this->sesi)) {
-			header("location: ./auth");
+			header("location: ../");
 		}else {
 			return $this->sesi;
 		}
 	}
 }
+
+$conn = new connection();
