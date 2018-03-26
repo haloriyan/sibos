@@ -9,7 +9,7 @@ $roleSaya = $admin->info($sesi, "role");
 if($roleSaya != $role) {
 	die('error : 403');
 }
-$tgl = date('Y-m');
+$tgl = date('Y-m-d');
 
 $trans 		= $report->totalTrans($tgl);
 $barang 	= $report->totBelumAmbil();

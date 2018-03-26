@@ -81,7 +81,7 @@ if($roleSaya != $role) {
 			<textarea class="box" id="noteAdd"></textarea>
 			<div class="bag-tombol">
 				<div class="bag bag-5">
-					<button class="merah" class="batal">BATAL</button>
+					<button class="merah" id="batal">BATAL</button>
 				</div>
 				<div class="bag bag-5">
 					<button class="hijau" id="tambahkan">TAMBAHKAN</button>
@@ -98,7 +98,7 @@ if($roleSaya != $role) {
 			<div id="formEdit"></div>
 			<div class="bag-tombol">
 				<div class="bag bag-5">
-					<button class="merah" class="batal">BATAL</button>
+					<button class="merah" id="batal">BATAL</button>
 				</div>
 				<div class="bag bag-5">
 					<button class="hijau" id="yaUbah">UBAH</button>
@@ -144,7 +144,7 @@ if($roleSaya != $role) {
 		hilangPopup("#ubahTransaksi");
 		hilangPopup("#lihatTransaksi");
 	});
-	klik(".batal", function() {
+	klik("#batal", function() {
 		hilangPopup("#tambahTrans");
 		hilangPopup("#ubahTransaksi");
 		hilangPopup("#lihatTransaksi");

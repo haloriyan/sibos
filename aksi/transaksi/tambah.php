@@ -19,4 +19,4 @@ $totalHarga = $harga * $qty;
 
 $bayar = $_POST['bayar'];
 
-$trans->insert($id, $layanan, $idadmin, $nama, $telepon, $alamat, $tgl, $qty, $status, $note, $totalHarga, $bayar);
+$trans->tambah($id, $layanan, $idadmin, $nama, $telepon, $alamat, $tgl, $qty, $status, $note, $totalHarga, $bayar);

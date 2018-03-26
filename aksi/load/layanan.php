@@ -29,3 +29,6 @@
 		?>
 	</tbody>
 </table>
+<script>
+	alert("hai");
+</script>

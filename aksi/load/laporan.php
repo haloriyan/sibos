@@ -16,10 +16,14 @@ for ($i=1; $i <= $tglSkrg; $i++) {
 	}
 	$tanggale = $tgl."-".$i;
 	$tanggal[] = '"'.$tanggale.'"';
-	$total[] = $report->totalTrans($tanggale);
+	$total[] = '"'.$report->totalTrans($tanggale).'"';
 }
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<div class="kiri">
+	<div>
+		<canvas id="myCanvas" width="10px" height="6"></canvas>
+	</div>
+</div>
 <div class="kanan">
 	<div class="wrap">
 		<table>
@@ -55,8 +59,39 @@ for ($i=1; $i <= $tglSkrg; $i++) {
 </div>
 <?php
 foreach ($tanggal as $key => $value) {
-	$y = '"'.$tanggal[$key].'",';
 	$im = implode(",", $tanggal);
 }
+foreach ($total as $k => $v) {
+	$ix = implode(",", $total);
+}
 ?>
-<input type="hidden" id="labelnya" value='<?php echo $im; ?>'>
+<script>
+	var canvas = pilih("#myCanvas");
+	var ctx = canvas.getContext('2d');
+
+	function bikinChart() {
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: [
+					<?php
+					echo $im;
+					?>
+				],
+				datasets: [{
+					label: "Performa Transaksi",
+					data: [
+						<?php
+						echo $ix;
+						?>
+					],
+					backgroundColor: 'rgba(52, 152, 219, 0.61)',
+					borderColor: "#3498db",
+					borderWidth: "1px"
+				}]
+			}
+		});
+	}
+
+	bikinChart();
+</script>

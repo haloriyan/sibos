@@ -20,6 +20,7 @@ if($roleSaya != $role) {
 	<link href="../aset/fw/build/font-awesome.min.css" rel="stylesheet">
 	<link href="../aset/css/style.dasbor.css" rel="stylesheet">
 	<script src="http://localhost/vendor/embo.js"></script>
+	<script src="http://localhost/vendor/jquery-3.1.1.js"></script>
 </head>
 <body>
 
@@ -116,8 +117,11 @@ if($roleSaya != $role) {
 <script src="../aset/js/script.dasbor.js"></script>
 <script>
 	function load(area) {
-		ambil("../aksi/load/layanan.php", function(respon) {
+		/* ambil("../aksi/load/layanan.php", function(respon) {
 			tulis(area, respon);
+		}); */
+		$.get("../aksi/load/layanan.php", function(resp) {
+			$(area).html(resp);
 		});
 	}
 	load("#load");

@@ -19,7 +19,6 @@ if($roleSaya != $role) {
 	<link href="../aset/fw/build/fw.css" rel="stylesheet">
 	<link href="../aset/fw/build/font-awesome.min.css" rel="stylesheet">
 	<link href="../aset/css/style.dasbor.css" rel="stylesheet">
-	<script src="../aset/js/embo.js"></script>
 </head>
 <body>
 
@@ -127,6 +126,7 @@ if($roleSaya != $role) {
 	</div>
 </div>
 
+<script src="../aset/js/embo.js"></script>
 <script src="../aset/js/script.dasbor.js"></script>
 <script>
 	function load(area) {
@@ -151,6 +151,10 @@ if($roleSaya != $role) {
 
 	klik("#tambah", function() {
 		munculPopup("#tambahKasir");
+	});
+
+	document.getElementById('tambahkan').addEventListener("click", function() {
+		alert('anjing');
 	});
 
 	klik("#tambahkan", function() {

@@ -32,6 +32,7 @@ $bln = explode(",", $bulan);
 	<link href="../aset/css/style.dasbor.css" rel="stylesheet">
 	<script src="../aset/js/chart.js"></script>
 	<script src="../aset/js/embo.js"></script>
+	<script src="../aset/js/jquery-3.1.1.js"></script>
 	<style>
 		.kiri {
 			position: fixed;
@@ -96,11 +97,6 @@ $bln = explode(",", $bulan);
 				?>
 			</select>
 		</h2>
-		<div class="kiri">
-			<div>
-				<canvas id="myCanvas" width="10px" height="6"></canvas>
-			</div>
-		</div>
 		<div id="load"></div>
 	</div>
 </div>
@@ -119,9 +115,16 @@ $bln = explode(",", $bulan);
 		}
 	});
 	function load(area) {
+		/*
 		ambil("../aksi/load/laporan.php", function(resp) {
 			tulis(area, resp);
 		});
+		*/
+		$(function() {
+			$.get("../aksi/load/laporan.php", function(resp) {
+				$(area).html(resp);
+			});
+		})
 	}
 
 	load("#load");
@@ -151,6 +154,7 @@ $bln = explode(",", $bulan);
 			load("#load");
 		});
 	}
+	/*
 	var canvas = pilih("#myCanvas");
 	var ctx = canvas.getContext('2d');
 	var labelnya = pilih("#labelnya").value;
@@ -171,6 +175,7 @@ $bln = explode(",", $bulan);
 			}
 		});
 	}
+	*/
 </script>
 
 </body>

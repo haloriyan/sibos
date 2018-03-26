@@ -23,7 +23,7 @@ class transaksi extends admin {
 			return $hasil;
 		}
 	}
-	public function insert($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l) {
+	public function tambah($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l) {
 		$q = mysqli_query($this->konek, "INSERT INTO transaksi VALUES('$a','$b','$c','$d','$e','$f','$g','$h','$i','$j','$k','$l')");
 		return $q;
 	}
