@@ -29,7 +29,8 @@ $nunggak 	= $report->totNunggak();
 <body>
 
 <div class="atas biru">
-	<div id="tblMenu" aksi="bkMenu"><i class="fa fa-bars"></i></div>
+	<div id="tblMenu" aksi="bkMenu" class="bknMobile"><i class="fa fa-bars"></i></div>
+	<div id="tblMenuMob" class="mobile" aksi="bkMenu"><i class="fa fa-bars"></i></div>
 	<div class="judul">Dashboard</div>
 	<div id="logout"><i class="fa fa-sign-out"></i></div>
 </div>

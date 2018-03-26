@@ -153,10 +153,6 @@ if($roleSaya != $role) {
 		munculPopup("#tambahKasir");
 	});
 
-	document.getElementById('tambahkan').addEventListener("click", function() {
-		alert('anjing');
-	});
-
 	klik("#tambahkan", function() {
 		var nama = pilih("#namaAdd").value;
 		var telepon = pilih("#telpAdd").value;

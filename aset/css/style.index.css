@@ -13,3 +13,12 @@ body {
 	padding-bottom: 19px;
 }
 .bg { background: rgba(0,0,0,0.4); }
+@media (max-width: 720px) {
+	.container {
+		width: 90%;
+		left: 5%;
+		top: 50px;
+	}
+	.box { width: 78%;margin-bottom: 26px; }
+	.container h1 { font-size: 28px; }
+}

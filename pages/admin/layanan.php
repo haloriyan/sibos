@@ -117,11 +117,8 @@ if($roleSaya != $role) {
 <script src="../aset/js/script.dasbor.js"></script>
 <script>
 	function load(area) {
-		/* ambil("../aksi/load/layanan.php", function(respon) {
+		ambil("../aksi/load/layanan.php", function(respon) {
 			tulis(area, respon);
-		}); */
-		$.get("../aksi/load/layanan.php", function(resp) {
-			$(area).html(resp);
 		});
 	}
 	load("#load");

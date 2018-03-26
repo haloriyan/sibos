@@ -1,5 +1,6 @@
 klik("#tblMenu", function() {
 	var aksi = pilih("#tblMenu").getAttribute("aksi");
+	var mobile = pilih("#tblMenu").getAttribute("class");
 	if(aksi == "bkMenu") {
 		pengaya(".menu", "left:0%");
 		pengaya(".atas", "left:25%");
@@ -10,6 +11,22 @@ klik("#tblMenu", function() {
 		pengaya(".atas", "left:0%");
 		pengaya(".container", "left:0%");
 		pilih("#tblMenu").setAttribute("aksi", "bkMenu");
+	}
+});
+klik("#tblMenuMob", function() {
+	var aksi = pilih("#tblMenuMob").getAttribute("aksi");
+	if(aksi == "bkMenu") {
+		pengaya(".menu", "left:0%");
+		pengaya(".atas", "left:50%");
+		pengaya(".container", "left:50%");
+		pilih("#tblMenuMob").setAttribute("aksi", "xMenu");
+		hilang("#logout");
+	}else {
+		pengaya(".menu", "left:-70%");
+		pengaya(".atas", "left:0%");
+		pengaya(".container", "left:0%");
+		pilih("#tblMenuMob").setAttribute("aksi", "bkMenu");
+		muncul("#logout");
 	}
 });
 function munculPopup(sel) {

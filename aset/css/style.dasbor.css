@@ -5,7 +5,7 @@
 	z-index: 2;
 	transition: 0.44s;
 }
-#tblMenu {
+#tblMenu,#tblMenuMob {
 	float: left;
 	margin-left: 5%;
 	font-size: 27px;
@@ -68,3 +68,30 @@
 	border-bottom-right-radius: 6px;
 }
 .more .wrap { margin-bottom: 0px; }
+.mobile { display: none; }
+.bknMobile { display: block; }
+
+@media (max-width: 720px) {
+	.card {
+		display: block;
+		width: 100%;
+	}
+	.card .wrap { padding-top: 5px; }
+	.menu {
+		width: 50%;
+	}
+	.mobile { display: block; }
+	.bknMobile { display: none; }
+	#load {
+		overflow: auto;
+		width: 100%;
+	}
+	.container { top: 80px; }
+	.container .bag-5 {
+		width: 100%;
+		float: none;
+	}
+	.popupWrapper .box {
+		width: 82%;
+	}
+}

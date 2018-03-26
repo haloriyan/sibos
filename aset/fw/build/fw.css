@@ -162,4 +162,7 @@ tbody td button {
 	.box {
 		width: 25px;
 	}
+	.popupWrapper {
+		left: 5%;right: 5%;
+	}
 }
