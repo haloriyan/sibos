@@ -19,8 +19,8 @@ if($roleSaya != $role) {
 	<link href="../aset/fw/build/fw.css" rel="stylesheet">
 	<link href="../aset/fw/build/font-awesome.min.css" rel="stylesheet">
 	<link href="../aset/css/style.dasbor.css" rel="stylesheet">
-	<script src="http://localhost/vendor/embo.js"></script>
-	<script src="http://localhost/vendor/jquery-3.1.1.js"></script>
+	<script src="../aset/js/embo.js"></script>
+	<script src="../aset/js/jquery-3.1.1.js"></script>
 </head>
 <body>
 
