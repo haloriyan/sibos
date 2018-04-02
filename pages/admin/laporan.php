@@ -192,6 +192,10 @@ $bln = explode(",", $bulan);
 		});
 	}
 	*/
+
+	klik("#logout", function() {
+		mengarahkan("./logout");
+	});
 </script>
 
 </body>
