@@ -9,8 +9,13 @@ $barang 	= $report->totBelumAmbil();
 $nunggak 	= $report->totNunggak();
 
 $tglSkrg = date('d');
+if($bln  == date('m')) {
+	$endTgl = $tglSkrg;
+}else {
+	$endTgl = 31;
+}
 
-for ($i=1; $i <= $tglSkrg; $i++) {
+for ($i=1; $i <= $endTgl; $i++) {
 	if($i < 10) {
 		$i = "0".$i;
 	}

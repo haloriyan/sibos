@@ -36,13 +36,29 @@ $bln = explode(",", $bulan);
 	<style>
 		.kiri {
 			position: fixed;
-			top: 170px;left: 5%;
+			top: 225px;left: 5%;
 			width: 45%;
 		}
 		.kanan {
 			position: absolute;
 			top: 0px;right: 5%;
 			width: 45%;
+		}
+		#bln { width: 20%; }
+		#thn { width: 10%; }
+		@media (max-width: 720px) {
+			.kiri {
+				top: 150px;
+				width: 90%;
+				position: absolute;
+			}
+			.kanan {
+				width: 90%;
+				top: 365px;
+			}
+			#bln,#thn {
+				width: 49%;
+			}
 		}
 	</style>
 </head>
@@ -68,35 +84,35 @@ $bln = explode(",", $bulan);
 	<div class="wrap">
 		<h2>
 			Performa Bulan :
-			<select class="box" id="bln" style="width: 20%;" onchange="ubahBln(this.value);">
-				<?php
-				for ($i=0; $i < 12; $i++) {
-					if($i == $blnSkrg) {
-						$selected = "selected";
-					}else {
-						$selected = "";
-					}
-					$val = $i+1;
-					if($val < 10) {
-						$val = "0".$val;
-					}
-					echo "<option value='".$val."' ".$selected.">".$bln[$i]."</option>";
-				}
-				?>
-			</select>
-			<select class="box" id="thn" style="width: 10%" onchange="ubahThn(this.value);">
-				<?php
-				for ($t=2010; $t <= $thnSkrg; $t++) {
-					if($t == $thnSkrg) {
-						$selected = "selected";
-					}else {
-						$selected = "";
-					}
-					echo "<option ".$selected.">".$t."</option>";
-				}
-				?>
-			</select>
 		</h2>
+		<select class="box" id="bln" onchange="ubahBln(this.value);">
+			<?php
+			for ($i=0; $i < 12; $i++) {
+				if($i == $blnSkrg) {
+					$selected = "selected";
+				}else {
+					$selected = "";
+				}
+				$val = $i+1;
+				if($val < 10) {
+					$val = "0".$val;
+				}
+				echo "<option value='".$val."' ".$selected.">".$bln[$i]."</option>";
+			}
+			?>
+		</select>
+		<select class="box" id="thn" onchange="ubahThn(this.value);">
+			<?php
+			for ($t=2010; $t <= $thnSkrg; $t++) {
+				if($t == $thnSkrg) {
+					$selected = "selected";
+				}else {
+					$selected = "";
+				}
+				echo "<option ".$selected.">".$t."</option>";
+			}
+			?>
+		</select>
 		<div id="load"></div>
 	</div>
 </div>
